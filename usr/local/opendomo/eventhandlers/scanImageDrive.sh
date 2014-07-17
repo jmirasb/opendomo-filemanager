@@ -20,8 +20,9 @@ fi
 if touch $drive/.scanfile.pid
 then
 	mkdir -p $drive/.thumbnails/
+	rm -fr .scanfile.txt 
 	# Indexing files in background
-	for file in `find -type f `; do bn=`basename $file`; convert -quiet -thumbnail 200 $file $bn; done rm $drive/.scanfile.pid & 
+	for file in `find -type f `; do bn=`basename $file`; convert -quiet -thumbnail 200 $file .thumbnails/$bn; identify $file >> .scanfile.txt done rm $drive/.scanfile.pid & 
 else
 	echo "#ERROR Invalid privileges or readonly drive"
 	return 1
