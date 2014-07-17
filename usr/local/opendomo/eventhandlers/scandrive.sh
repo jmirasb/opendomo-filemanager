@@ -1,18 +1,28 @@
 #!/bin/sh
-#desc:Generic script for scanning drives
+#desc: Scan a generic drive
 
-if test -z "$1"
+event="$1"
+module="$2"
+description="$3"
+drive="$4"
+
+
+if test -z "$drive"
 then
-	echo "usage:`basename $0` /path/to/drive"
+	echo "usage:`basename $0` event module description /path/to/drive"
 	exit 1
 fi
 
-if touch $1/.scanfile.txt
+
+if test -f $drive/.scanfile.pid
 then
-	cd $1	
-	find -type f | tee $1/.scanfile.txt
-	echo "#INFO Scan finished"
-	echo "# `cat $1/.scanfile.txt | wc -l` files found"
+	return 0
+fi
+if touch $drive/.scanfile.pid
+then
+	# Indexing files in background
+	find -type f > $drive/.scanfile.txt; rm $drive/.scanfile.pid & 
 else
-	echo "#ERROR Impossible to scan this file"
+	echo "#ERROR Invalid privileges or readonly drive"
+	return 1
 fi
