@@ -1,11 +1,19 @@
 #!/bin/sh
 #desc: Scan a image drive, like a digital camera 
+#type:local
+#package: odfilemanager
+
+# Copyright(c) 2014 OpenDomo Services SL. Licensed under GPL v3 or later
 
 event="$1"
 module="$2"
 description="$3"
 drive="$4"
 
+# Old thumbnail system
+CONVERTOPTIONS="-quiet -thumbnail 200"
+# New system: square-shaped 200px centered image
+CONVERTOPTIONS="-quiet -thumbnail 200x200^ -gravity center -extent 200x200"
 
 if test -z "$drive"
 then
@@ -22,7 +30,7 @@ then
 	mkdir -p $drive/.thumbnails/
 	rm -fr .scanfile.txt 
 	# Indexing files in background
-	for file in `find -type f `; do bn=`basename $file`; convert -quiet -thumbnail 200 $file .thumbnails/$bn; identify $file >> .scanfile.txt done rm $drive/.scanfile.pid & 
+	for file in `find -type f `; do bn=`basename $file`; convert $CONVERTOPTIONS $file .thumbnails/$bn; identify $file >> .scanfile.txt done rm $drive/.scanfile.pid & 
 else
 	echo "#ERROR Invalid privileges or readonly drive"
 	return 1
