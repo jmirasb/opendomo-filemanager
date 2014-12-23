@@ -20,8 +20,13 @@ then
 fi
 if touch $drive/.scanfile.pid
 then
-	# Indexing files in background
-	find -type f > $drive/.scanfile.txt; rm $drive/.scanfile.pid & 
+	# Indexing files 
+	mv $drive/.scanfile.txt $drive/.scanfile.old
+	for f in `find $drive/ -not -name ".*" -type f `
+	do
+		md5sum $f >> $drive/.scanfile.txt
+	done
+	rm $drive/.scanfile.pid $drive/.scanfile.old
 else
 	echo "#ERROR Invalid privileges or readonly drive"
 	return 1
