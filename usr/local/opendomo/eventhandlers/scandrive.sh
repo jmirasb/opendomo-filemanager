@@ -23,9 +23,11 @@ then
 	# Indexing files 
 	cd $drive
 	mv .scanfile.txt .scanfile.old
-	for f in `find ./ -not -name ".*" -type f `
+	for FILENAME in `find ./ -not -name ".*" -type f `
 	do
-		md5sum $f >> .scanfile.txt
+		MD5SUM=`md5sum $FILENAME | cut -f1 -d' '`
+		SIZE=`wc -c $FILENAME | cut -f1 -d' '`
+		echo "$MD5SUM $SIZE $FILENAME" >> .scanfile.txt
 	done
 	rm -fr .scanfile.pid .scanfile.old 
 
