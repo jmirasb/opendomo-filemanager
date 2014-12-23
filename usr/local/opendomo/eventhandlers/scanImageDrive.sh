@@ -28,9 +28,18 @@ fi
 if touch $drive/.scanfile.pid
 then
 	mkdir -p $drive/.thumbnails/
-	rm -fr .scanfile.txt 
+	cd $drive
+	rm -fr .scanpictures.txt 
 	# Indexing files in background
-	for file in `find -type f `; do bn=`basename $file`; convert $CONVERTOPTIONS $file .thumbnails/$bn; identify $file >> .scanfile.txt done rm $drive/.scanfile.pid & 
+	for file in  `find ./ -not -name ".*" -type f `
+	do 
+		if identify $file >> .scanpictures.txt 
+		then
+			bn=`basename $file`; 
+			convert $CONVERTOPTIONS $file .thumbnails/$bn; 
+		fi
+	done 
+	rm $drive/.scanfile.pid 
 else
 	echo "#ERROR Invalid privileges or readonly drive"
 	return 1
