@@ -3,7 +3,7 @@
 #package:odfilemanager
 #type:local
 
-# Copyright(c) 2011 OpenDomo Services SL. Licensed under GPL v3 or later
+# Copyright(c) 2014 OpenDomo Services SL. Licensed under GPL v3 or later
 
 # First argument is a directory in /media
 if test -z $1; then
@@ -22,8 +22,10 @@ fi
 cd "/media/$ROUTE"
 if [ "$ROUTE" == "/" ]; then
     echo "#> Select drive"
+	DIRTYPE="drive"
 else
     echo "#> Contents of [$ROUTE]"
+	DIRTYPE="dir"
 fi
 
 echo "list:`basename $0`	iconlist selectable"
@@ -36,9 +38,9 @@ for i in *; do
         if test -d "$i"; then
             # See folders
             if test "$ROUTE" != "/"; then
-                echo "	-$ROUTE/$dn	$i	dir"
+                echo "	-$ROUTE/$dn	$i	$DIRTYPE"
             else
-                echo "	-/$dn	$i	dir"
+                echo "	-/$dn	$i	$DIRTYPE"
             fi
         else
             # See files
