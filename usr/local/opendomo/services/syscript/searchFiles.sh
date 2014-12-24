@@ -19,9 +19,9 @@ else
 	echo "list:`basename $0`"
 	for d in *
 	do
-		if test "$d" != "*"
+		if test "$d" != "*" && test -f $d/.scanfile.txt
 		then
-			grep $STRING .scanfile.txt | sed 's/^/\t-/'
+			grep $STRING $d/.scanfile.txt | awk '{print "\t" $3 "\t" $3 "\t" "file" "\t" $2 }'
 		fi
 	done
 fi
