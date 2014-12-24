@@ -79,12 +79,14 @@ for i in *; do
 done
 
 echo "actions:"
-if test -x /usr/local/opendomo/deleteFiles.sh; then
-    echo "	deleteFiles.sh	Delete"
-fi
-if test -x /usr/local/opendomo/umountDrive.sh; then
-    if test "$ROUTE" == "/"; then
-        echo "	umountDrive.sh	Disconnect drive"
-    fi
+if test "$ROUTE" == "/"; then
+	if test -x /usr/local/opendomo/umountDrive.sh; then
+		echo "	umountDrive.sh	Disconnect drive"
+	fi
+else
+	echo "	goback	Back"
+	if test -x /usr/local/opendomo/deleteFiles.sh; then
+		echo "	deleteFiles.sh	Delete"
+	fi
 fi
 echo
