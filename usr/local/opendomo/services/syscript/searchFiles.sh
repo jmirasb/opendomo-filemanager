@@ -5,18 +5,17 @@
 
 # Copyright(c) 2014 OpenDomo Services SL. Licensed under GPL v3 or later
 
-DRIVE="/media/$1"
+SEARCHPATH="$1"
+STRING="$2"
 
 if test -z "$1"
 then
 	# No parameter specified"
-	echo "form:`basename $0`"
-	echo "	drive	Path	text	$1"
-	echo "	string	Search string	text	$2"
+	SEARCHPATH="/"
 
 else
-	STRING="$2"
-	cd /media/$1
+	cd /media/$SEARCHPATH
+	echo "#> Search results"
 	echo "list:`basename $0`"
 	for d in *
 	do
@@ -27,4 +26,8 @@ else
 	done
 fi
 echo
-
+echo "#> Search"
+echo "form:`basename $0`"
+echo "	drive	Path	text	$SEARCHPATH"
+echo "	string	Search string	text	$STRING"
+echo
