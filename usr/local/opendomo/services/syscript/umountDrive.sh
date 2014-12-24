@@ -3,6 +3,8 @@
 #package:odfilemanager
 #type:local
 
+# Copyright(c) 2014 OpenDomo Services SL. Licensed under GPL v3 or later
+
 DRIVE="/media/$1"
 CONFFILE="$DRIVE/opendomo.cfg"
 CONFDEVICE=`grep ^CONFDEVICE= $CONFFILE | sed 's/\"//g' | cut -f2 -d= `

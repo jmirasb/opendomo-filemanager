@@ -79,6 +79,7 @@ for i in *; do
 done
 
 echo "actions:"
+echo "	searchFiles.sh	Search"
 if test "$ROUTE" == "/"; then
 	if test -x /usr/local/opendomo/umountDrive.sh; then
 		echo "	umountDrive.sh	Disconnect drive"
