@@ -22,13 +22,14 @@ fi
 cd "/media/$ROUTE"
 if [ "$ROUTE" == "/" ]; then
     echo "#> Select drive"
+	echo "list:`basename $0`	iconlist selectable"
 	DIRTYPE="drive"
 else
     echo "#> Contents of [$ROUTE]"
+	echo "list:`basename $0`	iconlist"	
 	DIRTYPE="dir"
 fi
 
-echo "list:`basename $0`	iconlist selectable"
 for i in *; do
     if test "$i" != "*"; then
         e=`echo "$i" | cut -f2 -d.`
