@@ -21,7 +21,7 @@ else
 	do
 		if test "$d" != "*" && test -f $d/.scanfile.txt 
 		then
-			grep $STRING $d/.scanfile.txt | awk '{print "\t" $3 "\t" $3 "\t" "file" "\t" $2 }'
+			grep $STRING $d/.scanfile.txt | awk '{print "\t-" $d "/" $3 "\t" $3 "\t" "file" "\t" $2 }'
 		fi
 	done
 fi
