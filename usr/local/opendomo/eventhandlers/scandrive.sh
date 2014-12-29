@@ -1,5 +1,9 @@
 #!/bin/sh
 #desc: Scan a generic drive
+#type:local
+#package: odfilemanager
+
+# Copyright(c) 2014 OpenDomo Services SL. Licensed under GPL v3 or later
 
 event="$1"
 module="$2"
@@ -13,7 +17,7 @@ then
 	exit 1
 fi
 
-
+# Instead of /var/.../run, we place the PID file in the drive itself to know if the drive is busy
 if test -f $drive/.scanfile.pid
 then
 	exit 0
