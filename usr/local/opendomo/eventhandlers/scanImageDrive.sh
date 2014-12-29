@@ -23,7 +23,7 @@ fi
 
 if test -f $drive/.scanfile.pid
 then
-	return 0
+	exit 0
 fi
 if touch $drive/.scanfile.pid
 then
@@ -42,5 +42,5 @@ then
 	rm $drive/.scanfile.pid 
 else
 	echo "#ERROR Invalid privileges or readonly drive"
-	return 1
+	exit 1
 fi
