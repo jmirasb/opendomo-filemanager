@@ -19,7 +19,7 @@ else
 	echo "list:`basename $0`"
 	for d in *
 	do
-		if test "$d" != "*" && test -f $d/.scanfile.txt && test "$d" != "lost+found"
+		if test "$d" != "*" && test -f $d/.scanfile.txt 
 		then
 			grep $STRING $d/.scanfile.txt | awk '{print "\t" $3 "\t" $3 "\t" "file" "\t" $2 }'
 		fi

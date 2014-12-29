@@ -36,17 +36,21 @@ for i in *; do
         dn=`echo "$i" | sed 's/^.\///'`
         bn=`basename "$i"`
 
-        if test -d "$i"; then
+        if test -d "$i" 
+		then
             # See folders
             if test "$ROUTE" != "/"; then
                 echo "	-$ROUTE/$dn	$i	$DIRTYPE"
             else
-                echo "	-/$dn	$i	$DIRTYPE"
+				if test "$dn" != "lost+found"
+				then
+					echo "	-/$dn	$i	$DIRTYPE"
+				fi
             fi
         else
-            # See files
-	    if test "$e" = "$EXT" || test -z "$EXT" ; then
-                case "$e" in
+			# See files
+			if test "$e" = "$EXT" || test -z "$EXT" ; then
+				case "$e" in
                     jpg|jpeg|png|gif)
                         type="file image"
                     ;;
