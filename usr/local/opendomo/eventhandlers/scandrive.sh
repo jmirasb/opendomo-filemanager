@@ -26,14 +26,20 @@ if touch $drive/.scanfile.pid
 then
 	# Indexing files 
 	cd $drive
-	mv .scanfile.txt .scanfile.old
+	#mv .scanfile.txt .scanfile.old
+	touch .scanfile.txt
 	for FILENAME in `find ./ -not -name ".*" -type f `
 	do
-		MD5SUM=`md5sum $FILENAME | cut -f1 -d' '`
-		SIZE=`wc -c $FILENAME | cut -f1 -d' '`
-		echo "$MD5SUM $SIZE $FILENAME" >> .scanfile.txt
+		# If the file is not in the index ...
+		if ! grep -q $FILENAME .scanfile.txt
+		then
+			# ... we add it!
+			MD5SUM=`md5sum $FILENAME | cut -f1 -d' '`
+			SIZE=`wc -c $FILENAME | cut -f1 -d' '`
+			echo "$MD5SUM $SIZE $FILENAME" >> .scanfile.txt
+		fi
 	done
-	rm -fr .scanfile.pid .scanfile.old 
+	rm -fr .scanfile.pid 
 
 else
 	echo "#ERROR Invalid privileges or readonly drive"
