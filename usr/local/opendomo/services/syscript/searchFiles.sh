@@ -25,6 +25,7 @@ else
 	if test -d /media/$SEARCHPATH
 	then
 		cd /media/$SEARCHPATH
+		d="$SEARCHPATH"
 		GREPQUERY="/media/$SEARCHPATH/.scanfile.txt"
 	fi
 	
@@ -33,12 +34,13 @@ else
 	then
 		source /home/$USER/collections/$SEARCHPATH.col 
 		cd $LOCATION
+		d=$LOCATION
 		GREPQUERY=".scanfile.txt"
 	fi
 	
 	echo "#> Search results"
 	echo "list:`basename $0`"
-	grep $STRING $GREPQUERY | awk '{print "\t-" $d "/" $3 "\t" $3 "\t" "file" "\t" $2 }'
+	grep $STRING $GREPQUERY | awk '{print "\t-$d/" $3 "\t" $3 "\t" "file" "\t" $2 }'
 
 fi
 echo
