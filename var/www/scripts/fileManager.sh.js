@@ -8,8 +8,8 @@ $(function($){
 		if (event.which == 37 ) { // Left
 			currentItem--;
 		}	
-		if (currentItem == -1) currentItem = $("li.item").length -1;
-		if (currentItem >=  $("li.item").length ) currentItem = 0; 
+		if (currentItem == -1) currentItem = $("fieldset li").length -1;
+		if (currentItem >=  $("fieldset li").length ) currentItem = 0; 
 		
 		$("fieldset li").removeClass("highlight");
 		$("fieldset li")[2].className+=" highlight";
