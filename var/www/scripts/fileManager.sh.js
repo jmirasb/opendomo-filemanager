@@ -11,5 +11,5 @@ $("body").on("keydown",function(event){
 	if (currentItem >=  $("li.item").length ) currentItem = 0; 
 	
 	$("fieldset li").removeClass("highlight");
-	$("fieldset li")[currentItem].addClass("highlight");
+	$("fieldset li")[2].className+=" highlight";
 });
