@@ -12,16 +12,20 @@ $(function($){
 		if (currentItem == -1) currentItem = $("fieldset li").length -1;
 		if (currentItem >=  $("fieldset li").length ) currentItem = 0; 		
 		
-		var item = $("#" + $("fieldset li")[currentItem].id );
-		
-		/* FUNCTIONAL KEYS */
-		if (event.which == 46 ) { // Delete
-		
+		try {
+			var item = $($("fieldset li")[currentItem]);
+			
+			/* FUNCTIONAL KEYS */
+			if (event.which == 46 ) { // Delete
+			
+			}
+			
+			if (event.which == 13) {  // Enter
+				window.location.replace(item.find("a").prop("href"));
+			}		
+		}catch(e) {
+			
 		}
-		
-		if (event.which == 13) {  // Enter
-			window.location.replace(item.prop("href"));
-		}		
 		
 
 		
