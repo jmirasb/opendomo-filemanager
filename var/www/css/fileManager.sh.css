@@ -7,3 +7,7 @@ ul li.drive {
 ul li.file {
 	background-image: url("/images/file.png");
 }
+
+.highlight {
+	border: 2px solid red;
+}
