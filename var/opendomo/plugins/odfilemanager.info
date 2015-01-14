@@ -1,4 +1,4 @@
-DESCRIPTION="File manager for opendomo OS" 
+DESCRIPTION="File manager" 
 REQUIRED_BYTES="1000" 
 SCREENSHOTS="https://github.com/jmirasb/opendomo-filemanager/screenshot1.png" 
 SCHEME="FEFABA FFFFFF" 
