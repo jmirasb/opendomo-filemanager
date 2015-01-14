@@ -11,9 +11,11 @@ ul li.file {
 .highlight {
 	border: 2px solid red;
 }
-.deleted {
-	height: 0px;
-	width: 0px;
+li.deleted {
+	height: 0px!important;
+	width: 0px!important;
+	background-size: 0px;
+	opacity: 0;
 }
 
 li {
