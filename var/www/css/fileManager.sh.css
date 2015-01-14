@@ -12,9 +12,9 @@ ul li.file {
 	border: 2px solid red;
 }
 li.deleted {
-	height: 0px!important;
-	width: 0px!important;
-	background-size: 0px;
+	/*height: 0px!important;
+	width: 0px!important; */
+	background-size: 0px!important;
 	opacity: 0;
 }
 
