@@ -11,3 +11,12 @@ ul li.file {
 .highlight {
 	border: 2px solid red;
 }
+.deleted {
+	height: 0px;
+	width: 0px;
+}
+
+li {
+	transition: all 0.5s ease;
+	-webkit-transition: all 0.5s ease;
+}

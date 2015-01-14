@@ -17,7 +17,7 @@ $(function($){
 			
 			/* FUNCTIONAL KEYS */
 			if (event.which == 46 ) { // Delete
-			
+				item.addClass("deleted");
 			}
 			
 			if (event.which == 13) {  // Enter
