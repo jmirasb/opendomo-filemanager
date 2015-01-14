@@ -20,8 +20,10 @@ $(function($){
 				item.addClass("deleted");
 				setTimeout(function(){
 					item.remove();
+					if (currentItem == -1) currentItem = $("fieldset li").length -1;
+					if (currentItem >=  $("fieldset li").length ) currentItem = 0; 							
 					$("fieldset li")[currentItem].className+=" highlight";
-					},500);
+				},500);
 			}
 			
 			if (event.which == 13) {  // Enter
