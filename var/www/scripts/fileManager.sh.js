@@ -12,6 +12,6 @@ $(function($){
 		if (currentItem >=  $("fieldset li").length ) currentItem = 0; 
 		
 		$("fieldset li").removeClass("highlight");
-		$("fieldset li")[2].className+=" highlight";
+		$("fieldset li")[currentItem].className+=" highlight";
 	});
 });
