@@ -1,3 +1,5 @@
+var repositoryURL="https://github.com/jmirasb/opendomo-filemanager/";
+
 var currentItem = -1;
 $(function($){
 	$("body").on("keydown",function(event){
