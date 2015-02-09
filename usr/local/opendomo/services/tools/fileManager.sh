@@ -3,7 +3,7 @@
 #package:odfilemanager
 #type:local
 
-# Copyright(c) 2014 OpenDomo Services SL. Licensed under GPL v3 or later
+# Copyright(c) 2015 OpenDomo Services SL. Licensed under GPL v3 or later
 
 # First argument is a directory in /media
 if test -z $1; then
@@ -22,7 +22,7 @@ fi
 cd "/media/$ROUTE"
 if [ "$ROUTE" == "/" ]; then
     echo "#> Select drive"
-	echo "list:`basename $0`	iconlist selectable"
+	echo "list:`basename $0`	detailed selectable"
 	DIRTYPE="drive"
 else
     echo "#> Contents of [$ROUTE]"
@@ -94,5 +94,6 @@ else
 	if test -x /usr/local/opendomo/deleteFiles.sh; then
 		echo "	deleteFiles.sh	Delete"
 	fi
+	echo "	searchFiles.sh	Search"
 fi
 echo
