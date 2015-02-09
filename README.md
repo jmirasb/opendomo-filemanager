@@ -24,4 +24,8 @@ This plugin is not yet in a stable version, so it's required to be installed via
 
     $ plugin_add_from_gh.sh jmirasb opendomo-filemanager
     
-After a few seconds the plugin will be ready in your system. 
+After a few seconds the plugin will be ready in your system. In order to populate an existing drive with multiple files and high entropy, a good option is the following command, executed within the drive:
+
+    $ wget -r http://some.website
+    
+*Interrupt with Ctrl+C after a few minutes*
