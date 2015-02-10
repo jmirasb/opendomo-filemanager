@@ -24,6 +24,7 @@ list_drives() {
 	DIRTYPE="drive"
 	cd /media/
 	for drive in * ; do
+		LABEL=""
 		if test -f /media/$drive/opendomo.cfg; then
 			source /media/$drive/opendomo.cfg
 		fi
@@ -43,7 +44,7 @@ list_path_contents() {
     echo "#> Contents of [$ROUTE]"
 	echo "list:`basename $0`	iconlist"	
 	DIRTYPE="dir"
-	cd /media/$ROUTE
+	cd "/media/$ROUTE"
 	for i in *; do
 		if test "$i" != "*"; then
 			e=`echo "$i" | cut -f2 -d.`
@@ -108,7 +109,7 @@ list_path_contents() {
 if [ "$ROUTE" == "/" ]; then
 	list_drives
 else
-	list_path_contents $ROUTE
+	list_path_contents "$ROUTE"
 fi
 
 echo
