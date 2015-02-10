@@ -6,7 +6,7 @@
 # Copyright(c) 2015 OpenDomo Services SL. Licensed under GPL v3 or later
 
 # First argument is a directory in /media
-if test -z $1; then
+if test -z "$1"; then
     ROUTE="/"
 else
     ROUTE="$1"
@@ -36,6 +36,7 @@ list_drives() {
 	echo "	searchFiles.sh	Search"
 	if test -x /usr/local/opendomo/umountDrive.sh; then
 		echo "	umountDrive.sh	Disconnect drive"
+		echo "	setupDrive.sh	Setup drive"
 	fi
 }
 
