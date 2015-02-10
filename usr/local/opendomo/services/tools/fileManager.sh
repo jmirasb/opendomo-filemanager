@@ -28,7 +28,7 @@ list_drives() {
 			source /media/$drive/opendomo.cfg
 		fi
 		test -z "$LABEL" && LABEL=$drive
-		echo "	-/$drive	$LABEL	$drive	"
+		echo "	-/$drive	$LABEL	drive	$drive"
 	done
 	
 	echo "actions:"

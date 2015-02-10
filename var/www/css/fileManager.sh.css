@@ -1,11 +1,15 @@
 ul li.dir {
 	background-image: url("/images/dir.png");
 }
-ul li.drive {
-	background-image: url("/images/drive.png");
-}
 ul li.file {
 	background-image: url("/images/file.png");
+}
+
+ul li.drive p {
+	background-image: url("/images/drive.png");
+	background-position: left center;
+	background-repeat: no-repeat;
+	background-size: 30px;
 }
 
 .highlight {
