@@ -14,7 +14,7 @@ if test -z "$1" || ! test -d "$DRIVE"; then
 fi
 
 if ! test -z "$2"; then
-	echo "LABEL=$2" > $DRIVE/opendomo.cfg
+	echo "LABEL='$2'" > $DRIVE/opendomo.cfg
 fi
 
 if test -f  $DRIVE/opendomo.cfg; then
