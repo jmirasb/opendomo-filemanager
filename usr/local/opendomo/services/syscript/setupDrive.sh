@@ -15,6 +15,12 @@ fi
 
 if ! test -z "$2"; then
 	echo "LABEL='$2'" > $DRIVE/opendomo.cfg
+	DISKTYPE=""
+	test "$3" = "on" && DISKTYPE="$DISKTYPE image"
+	test "$4" = "on" && DISKTYPE="$DISKTYPE music"
+	echo "DISKTYPE='$DISKTYPE'" >> $DRIVE/opendomo.cfg
+	echo "AUTOIMPORT='$5'" >> $DRIVE/opendomo.cfg
+	echo "AUTOCLEANUP='$6'" >> $DRIVE/opendomo.cfg
 fi
 
 if test -f  $DRIVE/opendomo.cfg; then
