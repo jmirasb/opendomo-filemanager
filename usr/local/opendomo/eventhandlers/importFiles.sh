@@ -1,9 +1,9 @@
 #!/bin/sh
 #desc:Import files
 #type:local
-#package: odfilemanager
+#package:odfilemanager
 
-# Copyright(c) 2014 OpenDomo Services SL. Licensed under GPL v3 or later
+# Copyright(c) 2015 OpenDomo Services SL. Licensed under GPL v3 or later
 
 event="$1"
 module="$2"
