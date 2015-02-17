@@ -40,13 +40,22 @@ li {
 }
 #imagepreview div.previousimage {
 	background-position: center;
-	background-repeat: no-repeat
+	background-repeat: no-repeat;
+	display: inline-block;
+	min-height: 300px;
+	min-width: 300px;
 }
 #imagepreview div.currentimage {
 	background-position: center;
-	background-repeat: no-repeat
+	background-repeat: no-repeat;
+	display: inline-block;
+	min-height: 300px;
+	min-width: 300px;
 }
 #imagepreview div.nextimage {
 	background-position: center;
-	background-repeat: no-repeat
+	background-repeat: no-repeat;
+	display: inline-block;
+	min-height: 300px;
+	min-width: 300px;
 }

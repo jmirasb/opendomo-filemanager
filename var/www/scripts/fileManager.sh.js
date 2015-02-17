@@ -41,22 +41,28 @@ $(function($){
 	});
 	
 	initialize_thumbnails();
-	$("body").append("<div id='imagepreview' style='display:none;'><img class='previousimage'><img class='currentimage'><img class='nextimage'></div>");
+	$("body").append("<div id='imagepreview' style='display:none;'>"+
+		"<div class='previousimage'></div>"+
+		"<div class='currentimage'></div>"+
+		"<div class='nextimage'></div>"+
+		"</div>");
 });
 
 function initialize_thumbnails() {
 	// Processing thumbnails
 	$("fieldset.indexed li.image").each(function(item){
 		var fullpath = $(this).prop("id");
+		$(this).on("click",zoomTo);
 		var link = $(this).find("a");
 		var imgpath = link.prop("href");
-		link.prop("href","javascript:zoomTo(this)"); // Disable the link
+		link.prop("href","#").data("imagepath",imgpath);
+		//link.prop("href","javascript:zoomTo('"+fullpath+"')"); // Disable the link
 		$(this).css("background-image","url('" + imgpath+ "')");
 	});	
 }
 
-function zoomTo(item) {
+function zoomTo(event) {
 	$("#imagepreview").show("slow");
-	var imagepath = $(item).prop("id");
-	$("div.currentimage").css("background-image","url('" + imgpath+ "')");
+	var imagepath = $(this).data("imagepath");
+	$("div.currentimage").css("background-image","url('" + imagepath+ "')");
 }
