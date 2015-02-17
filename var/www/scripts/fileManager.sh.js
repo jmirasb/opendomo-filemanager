@@ -40,4 +40,10 @@ $(function($){
 		$("fieldset li").removeClass("highlight");
 		$("fieldset li")[currentItem].className+=" highlight";
 	});
+	// Processing thumbnails
+	$("fieldset.indexed li.image").each(function(item){
+		var fullpath = $(this).prop("id");
+		var imgpath = $(this).find("a").prop("href");
+		$(this).css("background-image","url('" + imgpath+ "')");
+	});
 });

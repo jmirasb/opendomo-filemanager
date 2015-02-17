@@ -42,10 +42,15 @@ list_drives() {
 
 list_path_contents() {
 	ROUTE=$1
-    echo "#> Contents of [$ROUTE]"
-	echo "list:`basename $0`	iconlist"	
+	DRIVE=`echo $1 | cut -f1 -d'/'`
 	DIRTYPE="dir"
-	cd "/media/$ROUTE"
+	
+	cd "/media/$ROUTE"	
+
+	test -d ./.thumbnails && CLASS="indexed imagedir"
+	
+    echo "#> Contents of [$ROUTE]"
+	echo "list:`basename $0`	iconlist $CLASS"	
 	for i in *; do
 		if test "$i" != "*"; then
 			e=`echo "$i" | cut -f2 -d.`
