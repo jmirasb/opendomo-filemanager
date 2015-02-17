@@ -70,10 +70,10 @@ function initialize_thumbnails() {
 function zoomTo(event) {
 	currentItem = $(this).data("itemnumber");
 	$("#imagepreview").show("slow");
-	var imagepath = $("fieldset li")[currentItem].data("imagepath");
-	var pi = $("fieldset li")[currentItem-1]?$("fieldset li")[currentItem-1].data("imagepath"):"";
-	var ci = $("fieldset li")[currentItem]?$("fieldset li")[currentItem].data("imagepath"):"";
-	var ni = $("fieldset li")[currentItem+1]?$("fieldset li")[currentItem+1].data("imagepath"):"";
+	var imagepath = $($("fieldset li")[currentItem]).data("imagepath");
+	var pi = $($("fieldset li")[currentItem-1]?$("fieldset li")[currentItem-1]).data("imagepath"):"";
+	var ci = $($("fieldset li")[currentItem]?$("fieldset li")[currentItem]).data("imagepath"):"";
+	var ni = $($("fieldset li")[currentItem+1]?$("fieldset li")[currentItem+1]).data("imagepath"):"";
 	
 	$("div.previousimage").css("background-image","url('" +  pi + "')");
 	$("div.currentimage").css("background-image","url('" +  ci + "')");
