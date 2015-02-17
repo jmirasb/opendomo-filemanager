@@ -29,6 +29,9 @@ li {
 	-webkit-transition: all 0.5s ease;
 }
 
+#imagepreview.folded {
+	top: -130vh;
+}
 
 #imagepreview {
 	position: fixed;
@@ -43,6 +46,8 @@ li {
 #imagepreview div.closebanner {
 	width: 100vw;
 	height: 20px;
+	z-index: 999;
+	background-color: white;
 }
 #imagepreview div.previousimage {
 	background-position: center;
@@ -50,9 +55,11 @@ li {
 	display: inline-block;
 	height: 80vh;
 	width: 50vw;
-	border: 1px solid gray;
+	left: -10vw;
+	/*border: 1px solid gray;*/
 	position: absolute;
 	opacity: 0.5;
+	transform: perspective( 600px ) rotateY( -45deg );
 }
 #imagepreview div.currentimage {
 	background-position: center;
@@ -61,7 +68,7 @@ li {
 	height: 80vh;
 	width: 80vw;
 	left: 10vw;
-	border: 1px solid gray;
+	/*border: 1px solid gray;*/
 	position: absolute;
 	background-size: contain;
 }
@@ -71,8 +78,9 @@ li {
 	display: inline-block;
 	height: 80vh;
 	width: 50vw;
-	left:  90vw;
-	border: 1px solid gray;
+	left:  75vw;
+	/*border: 1px solid gray;*/
 	position: absolute;
 	opacity: 0.5;
+	transform: perspective( 600px ) rotateY( 45deg );
 }

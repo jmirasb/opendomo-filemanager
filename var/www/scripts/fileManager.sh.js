@@ -41,7 +41,7 @@ $(function($){
 	});
 	
 	initialize_thumbnails();
-	$("body").append("<div id='imagepreview' style='display:none;'>"+
+	$("body").append("<div id='imagepreview' class='folded'>"+
 		"<div class='closebanner'></div>"+
 		"<div class='previousimage'></div>"+
 		"<div class='currentimage'></div>"+
@@ -70,9 +70,9 @@ function initialize_thumbnails() {
 
 function zoomTo(event) {
 	currentItem = $(this).data("itemnumber");
-	$("#imagepreview").show("slow");
+	$("#imagepreview").toggleClass("folded");
 	$("div.closebanner").on("click",function(){
-		$("#imagepreview").hide("slow");
+		$("#imagepreview").toggleClass("folded");
 	});
 	var pi = getImageFromItem(currentItem-1);
 	var ci = getImageFromItem(currentItem);
