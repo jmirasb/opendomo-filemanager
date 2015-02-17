@@ -43,10 +43,22 @@ $(function($){
 	initialize_thumbnails();
 	$("body").append("<div id='imagepreview' class='folded'>"+
 		"<div class='closebanner'></div>"+
+		"<div class='behindimage'></div>"+
 		"<div class='previousimage'></div>"+
 		"<div class='currentimage'></div>"+
 		"<div class='nextimage'></div>"+
 		"</div>");
+		
+	$("div.closebanner").on("click",function(){
+		$("#imagepreview").toggleClass("folded");
+	});	
+	$("div.nextimage").on("click",function(){
+		$("div.previousimage").removeClass("previousimage").addClass("behindimage");
+		$("div.currentimage").removeClass("currentimage").addClass("previousimage");
+		$("div.nextimage").removeClass("nextimage").addClass("currentimage");
+		//TODO preload next image
+		$("div.behindimage").removeClass("behindimage").addClass("nextimage");
+	});
 });
 
 function initialize_thumbnails() {
@@ -71,9 +83,7 @@ function initialize_thumbnails() {
 function zoomTo(event) {
 	currentItem = $(this).data("itemnumber");
 	$("#imagepreview").toggleClass("folded");
-	$("div.closebanner").on("click",function(){
-		$("#imagepreview").toggleClass("folded");
-	});
+
 	var pi = getImageFromItem(currentItem-1);
 	var ci = getImageFromItem(currentItem);
 	var ni = getImageFromItem(currentItem+1);

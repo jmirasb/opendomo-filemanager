@@ -33,6 +33,7 @@ li {
 	top: -130vh;
 }
 
+
 #imagepreview {
 	position: fixed;
 	top: 0px;
@@ -42,12 +43,27 @@ li {
 	overflow: hidden;
 	vertical-align: middle;
 	background-color: rgba(240, 240, 240, 0.83);
+	transition: all 0.5s ease;
+	-webkit-transition: all 0.5s ease;
+
 }
 #imagepreview div.closebanner {
 	width: 100vw;
 	height: 20px;
 	z-index: 999;
 	background-color: white;
+}
+#imagepreview div.behindimage {
+	background-position: center;
+	background-repeat: no-repeat;
+	display: inline-block;
+	height: 80vh;
+	width: 50vw;
+	left: -10vw;
+	/*border: 1px solid gray;*/
+	position: absolute;
+	opacity: 0;
+	transform: perspective( 600px ) rotateY( -90deg );
 }
 #imagepreview div.previousimage {
 	background-position: center;
@@ -71,6 +87,7 @@ li {
 	/*border: 1px solid gray;*/
 	position: absolute;
 	background-size: contain;
+	z-index: 10;
 }
 #imagepreview div.nextimage {
 	background-position: center;
