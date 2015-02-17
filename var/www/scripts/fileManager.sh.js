@@ -51,13 +51,14 @@ $(function($){
 		
 
 	$("#imagepreview").on("click",function(event){
-		console.log(event);
-		event.preventDefault();
 		if (event.offsetY < 30) {
+			console.log("Closing");
 			$("#imagepreview").toggleClass("folded");
 			return;
 		}
-		if (event.screenX < (document.body.offsetWidth / 2)) { // left
+		if (event.offsetX < (document.body.offsetWidth / 2)) { // left
+			currentItem--;
+			console.log("Previous");
 			if (currentItem<0) currentItem=$("fieldset li").length;
 			var imgpath = getImageFromItem(currentItem-1);
 			
@@ -68,8 +69,10 @@ $(function($){
 			$("div.previousimage").removeClass("previousimage").addClass("currentimage");// previous -> current 
 			$("div.reserved").removeClass("reserved").addClass("previousimage");         // behind -> previous		
 		} else { // Right
+			currentItem++;
+			console.log("Next");
 			if (currentItem> $("fieldset li").length) currentItem=-1;
-			var imgpath = getImageFromItem(currentItem+2);
+			var imgpath = getImageFromItem(currentItem+1);
 		
 			$("div.behindimage").removeClass("behindimage").addClass("reserved")
 				.css("background-image","url('" + imgpath+ "')");
