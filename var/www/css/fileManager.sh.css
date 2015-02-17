@@ -40,6 +40,10 @@ li {
 	vertical-align: middle;
 	background-color: rgba(240, 240, 240, 0.83);
 }
+#imagepreview div.closebanner {
+	width: 100vw;
+	height: 20px;
+}
 #imagepreview div.previousimage {
 	background-position: center;
 	background-repeat: no-repeat;

@@ -42,6 +42,7 @@ $(function($){
 	
 	initialize_thumbnails();
 	$("body").append("<div id='imagepreview' style='display:none;'>"+
+		"<div class='closebanner'></div>"+
 		"<div class='previousimage'></div>"+
 		"<div class='currentimage'></div>"+
 		"<div class='nextimage'></div>"+
@@ -70,6 +71,9 @@ function initialize_thumbnails() {
 function zoomTo(event) {
 	currentItem = $(this).data("itemnumber");
 	$("#imagepreview").show("slow");
+	$("div.closebanner").on("click",function(){
+		$("#imagepreview").hide("slow");
+	});
 	var imagepath = $($("fieldset li")[currentItem]).data("imagepath");
 	var pi = $($("fieldset li")[currentItem-1]?$("fieldset li")[currentItem-1]).data("imagepath"):"";
 	var ci = $($("fieldset li")[currentItem]?$("fieldset li")[currentItem]).data("imagepath"):"";
