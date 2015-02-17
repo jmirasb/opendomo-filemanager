@@ -44,21 +44,38 @@ $(function($){
 	$("body").append("<div id='imagepreview' class='folded'>"+
 		"<div class='closebanner'></div>"+
 		"<div class='behindimage'></div>"+
-		"<div class='previousimage'></div>"+
-		"<div class='currentimage'></div>"+
-		"<div class='nextimage'></div>"+
+		"<div id='previewprevious' class='previousimage'></div>"+
+		"<div id='previewcurrent' class='currentimage'></div>"+
+		"<div id='previewnext' class='nextimage'></div>"+
 		"</div>");
 		
 	$("div.closebanner").on("click",function(){
 		$("#imagepreview").toggleClass("folded");
 	});	
-	$("div.nextimage").on("click",function(){
-		$("div.previousimage").removeClass("previousimage").addClass("behindimage");
-		$("div.currentimage").removeClass("currentimage").addClass("previousimage");
-		$("div.nextimage").removeClass("nextimage").addClass("currentimage");
-		//TODO preload next image
-		$("div.behindimage").removeClass("behindimage").addClass("nextimage");
+	$("#previewnext").on("click",function(){
+		if (currentItem> $("fieldset li").length) currentItem=-1;
+		var imgpath = getImageFromItem(currentItem+1);
+		
+		$("div.behindimage").removeClass("behindimage").addClass("reserved")
+			.css("background-image","url('" + imgpath+ "')");
+		$("div.previousimage").removeClass("previousimage").addClass("behindimage"); // previous -> behind
+		$("div.currentimage").removeClass("currentimage").addClass("previousimage"); // current -> previous
+		$("div.nextimage").removeClass("nextimage").addClass("currentimage");        // next -> current 
+		$("div.reserved").removeClass("reserved").addClass("nextimage");             // behind -> next
 	});
+	
+	$("#previewprevious").on("click",function(){
+		if (currentItem<0) currentItem=$("fieldset li").length;
+		var imgpath = getImageFromItem(currentItem-1);
+		
+		$("div.behindimage").removeClass("behindimage").addClass("reserved")
+			.css("background-image","url('" + imgpath+ "')");
+		$("div.nextimage").removeClass("nextimage").addClass("behindimage");         // next -> behind
+		$("div.currentimage").removeClass("currentimage").addClass("nextimage");     // current -> next
+		$("div.previousimage").removeClass("previousimage").addClass("currentimage");// previous -> current 
+		$("div.reserved").removeClass("reserved").addClass("previousimage");         // behind -> previous
+	});	
+	
 });
 
 function initialize_thumbnails() {
