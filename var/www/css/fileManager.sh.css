@@ -59,6 +59,7 @@ li {
 	left: 10vw;
 	border: 1px solid gray;
 	position: absolute;
+	background-size: contain;
 }
 #imagepreview div.nextimage {
 	background-position: center;

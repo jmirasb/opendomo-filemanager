@@ -50,20 +50,32 @@ $(function($){
 
 function initialize_thumbnails() {
 	// Processing thumbnails
-	$("fieldset.indexed li.image").each(function(item){
+	item=0;
+	$("fieldset li").each(function(item){
 		var fullpath = $(this).prop("id");
+		$(this).data("itemnumber",item);
 		$(this).on("click",zoomTo);
 		var link = $(this).find("a");
 		var imgpath = link.prop("href");
 		link.prop("href","#");
-		$(this).data("imagepath",imgpath);
 		//link.prop("href","javascript:zoomTo('"+fullpath+"')"); // Disable the link
-		$(this).css("background-image","url('" + imgpath+ "')");
+		if ($(this).hasClass("image")){
+			$(this).data("imagepath",imgpath);
+			$(this).css("background-image","url('" + imgpath+ "')");
+		}
+		item++;
 	});	
 }
 
 function zoomTo(event) {
+	currentItem = $(this).data("itemnumber");
 	$("#imagepreview").show("slow");
-	var imagepath = $(this).data("imagepath");
-	$("div.currentimage").css("background-image","url('" + imagepath+ "')");
+	var imagepath = $("fieldset li")[currentItem].data("imagepath");
+	var pi = $("fieldset li")[currentItem-1]?$("fieldset li")[currentItem-1].data("imagepath"):"";
+	var ci = $("fieldset li")[currentItem]?$("fieldset li")[currentItem].data("imagepath"):"";
+	var ni = $("fieldset li")[currentItem+1]?$("fieldset li")[currentItem+1].data("imagepath"):"";
+	
+	$("div.previousimage").css("background-image","url('" +  pi + "')");
+	$("div.currentimage").css("background-image","url('" +  ci + "')");
+	$("div.nextimage").css("background-image","url('" +  ni + "')");
 }
