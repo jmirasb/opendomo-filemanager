@@ -55,7 +55,8 @@ function initialize_thumbnails() {
 		$(this).on("click",zoomTo);
 		var link = $(this).find("a");
 		var imgpath = link.prop("href");
-		link.prop("href","#").data("imagepath",imgpath);
+		link.prop("href","#");
+		$(this).data("imagepath",imgpath);
 		//link.prop("href","javascript:zoomTo('"+fullpath+"')"); // Disable the link
 		$(this).css("background-image","url('" + imgpath+ "')");
 	});	
