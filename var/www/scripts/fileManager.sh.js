@@ -49,33 +49,37 @@ $(function($){
 		"<div id='previewnext' class='nextimage'></div>"+
 		"</div>");
 		
-	$("div.closebanner").on("click",function(){
-		$("#imagepreview").toggleClass("folded");
-	});	
-	$("#previewnext").on("click",function(){
-		if (currentItem> $("fieldset li").length) currentItem=-1;
-		var imgpath = getImageFromItem(currentItem+1);
+
+	$("#imagepreview").on("click",function(event){
+		console.log(event);
+		event.preventDefault();
+		if (event.currentTarget.className=='closebanner') {
+			$("#imagepreview").toggleClass("folded");
+			return;
+		}
+		if (event.screenX < (screen.availWidth / 2)) { // left
+			if (currentItem<0) currentItem=$("fieldset li").length;
+			var imgpath = getImageFromItem(currentItem-1);
+			
+			$("div.behindimage").removeClass("behindimage").addClass("reserved")
+				.css("background-image","url('" + imgpath+ "')");
+			$("div.nextimage").removeClass("nextimage").addClass("behindimage");         // next -> behind
+			$("div.currentimage").removeClass("currentimage").addClass("nextimage");     // current -> next
+			$("div.previousimage").removeClass("previousimage").addClass("currentimage");// previous -> current 
+			$("div.reserved").removeClass("reserved").addClass("previousimage");         // behind -> previous		
+		} else { // Right
+			if (currentItem> $("fieldset li").length) currentItem=-1;
+			var imgpath = getImageFromItem(currentItem+1);
 		
-		$("div.behindimage").removeClass("behindimage").addClass("reserved")
-			.css("background-image","url('" + imgpath+ "')");
-		$("div.previousimage").removeClass("previousimage").addClass("behindimage"); // previous -> behind
-		$("div.currentimage").removeClass("currentimage").addClass("previousimage"); // current -> previous
-		$("div.nextimage").removeClass("nextimage").addClass("currentimage");        // next -> current 
-		$("div.reserved").removeClass("reserved").addClass("nextimage");             // behind -> next
+			$("div.behindimage").removeClass("behindimage").addClass("reserved")
+				.css("background-image","url('" + imgpath+ "')");
+			$("div.previousimage").removeClass("previousimage").addClass("behindimage"); // previous -> behind
+			$("div.currentimage").removeClass("currentimage").addClass("previousimage"); // current -> previous
+			$("div.nextimage").removeClass("nextimage").addClass("currentimage");        // next -> current 
+			$("div.reserved").removeClass("reserved").addClass("nextimage");             // behind -> next		
+		}
 	});
-	
-	$("#previewprevious").on("click",function(){
-		if (currentItem<0) currentItem=$("fieldset li").length;
-		var imgpath = getImageFromItem(currentItem-1);
 		
-		$("div.behindimage").removeClass("behindimage").addClass("reserved")
-			.css("background-image","url('" + imgpath+ "')");
-		$("div.nextimage").removeClass("nextimage").addClass("behindimage");         // next -> behind
-		$("div.currentimage").removeClass("currentimage").addClass("nextimage");     // current -> next
-		$("div.previousimage").removeClass("previousimage").addClass("currentimage");// previous -> current 
-		$("div.reserved").removeClass("reserved").addClass("previousimage");         // behind -> previous
-	});	
-	
 });
 
 function initialize_thumbnails() {
