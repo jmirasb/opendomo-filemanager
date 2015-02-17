@@ -41,6 +41,7 @@ $(function($){
 	});
 	
 	initialize_thumbnails();
+	$("body").append("<div id='imagepreview' style='display:none;'><img class='previousimage'><img class='currentimage'><img class='nextimage'></div>");
 });
 
 function initialize_thumbnails() {
@@ -49,7 +50,13 @@ function initialize_thumbnails() {
 		var fullpath = $(this).prop("id");
 		var link = $(this).find("a");
 		var imgpath = link.prop("href");
-		link.prop("href","#"); // Disable the link
+		link.prop("href","javascript:zoomTo(this)"); // Disable the link
 		$(this).css("background-image","url('" + imgpath+ "')");
 	});	
+}
+
+function zoomTo(item) {
+	$("#imagepreview").show("slow");
+	var imagepath = $(item).prop("id");
+	$("div.currentimage").css("background-image","url('" + imgpath+ "')");
 }
