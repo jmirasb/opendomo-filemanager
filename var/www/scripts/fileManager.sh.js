@@ -74,12 +74,24 @@ function zoomTo(event) {
 	$("div.closebanner").on("click",function(){
 		$("#imagepreview").hide("slow");
 	});
-	var imagepath = $($("fieldset li")[currentItem]).data("imagepath");
-	var pi = $($("fieldset li")[currentItem-1]?$("fieldset li")[currentItem-1]).data("imagepath"):"";
-	var ci = $($("fieldset li")[currentItem]?$("fieldset li")[currentItem]).data("imagepath"):"";
-	var ni = $($("fieldset li")[currentItem+1]?$("fieldset li")[currentItem+1]).data("imagepath"):"";
+	var pi = getImageFromItem(currentItem-1);
+	var ci = getImageFromItem(currentItem);
+	var ni = getImageFromItem(currentItem+1);
 	
 	$("div.previousimage").css("background-image","url('" +  pi + "')");
 	$("div.currentimage").css("background-image","url('" +  ci + "')");
 	$("div.nextimage").css("background-image","url('" +  ni + "')");
+}
+
+function getImageFromItem(itemNumber) {
+	try {
+		if ($("fieldset li").length> itemNumber && itemNumber>=0) {
+			var item = $("fieldset li")[itemNumber];
+			return $(item).data("imagepath");	
+		}else{
+			return "";
+		}
+	} catch(e){
+		console.log(e.message);
+	}
 }
