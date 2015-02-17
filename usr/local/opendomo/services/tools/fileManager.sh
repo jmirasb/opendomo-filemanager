@@ -42,7 +42,7 @@ list_drives() {
 
 list_path_contents() {
 	ROUTE=$1
-	DRIVE=`echo $1 | cut -f1 -d'/'`
+	DRIVE=`echo $1 | cut -f2 -d'/'`
 	DIRTYPE="dir"
 	
 	cd "/media/$ROUTE"	
