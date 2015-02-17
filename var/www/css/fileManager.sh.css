@@ -13,9 +13,10 @@ ul li.drive p {
 }
 
 .highlight {
-  -webkit-box-shadow: 0 8px 6px -6px black;
-     -moz-box-shadow: 0 8px 6px -6px black;
-          box-shadow: 0 8px 6px -6px black;
+  -webkit-box-shadow: 0px 0px 8px 5px rgba(0, 11, 192, 0.5);
+     -moz-box-shadow: 0px 0px 8px 5px rgba(0, 11, 192, 0.5);
+          box-shadow: 0px 0px 8px 5px rgba(0, 11, 192, 0.5);
+		  
 }
 li.deleted {
 	/*height: 0px!important;
