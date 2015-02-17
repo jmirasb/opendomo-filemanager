@@ -47,7 +47,7 @@ list_path_contents() {
 	
 	cd "/media/$ROUTE"	
 
-	test -d ./.thumbnails && CLASS="indexed imagedir"
+	test -d "/media/$DRIVE/.thumbnails" && CLASS="indexed imagedir"
 	
     echo "#> Contents of [$ROUTE]"
 	echo "list:`basename $0`	iconlist $CLASS"	

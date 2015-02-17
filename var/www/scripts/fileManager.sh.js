@@ -2,6 +2,7 @@ var repositoryURL="https://github.com/jmirasb/opendomo-filemanager/";
 
 var currentItem = -1;
 $(function($){
+	/* This will be moved as CGI's feature when it's finally stable */
 	$("body").on("keydown",function(event){
 		console.log("Key pressed: "+ event.which);
 		/* NAVIGATION KEYS */
@@ -34,16 +35,21 @@ $(function($){
 		}catch(e) {
 			
 		}
-		
-
-		
+				
 		$("fieldset li").removeClass("highlight");
 		$("fieldset li")[currentItem].className+=" highlight";
 	});
+	
+	initialize_thumbnails();
+});
+
+function initialize_thumbnails() {
 	// Processing thumbnails
 	$("fieldset.indexed li.image").each(function(item){
 		var fullpath = $(this).prop("id");
-		var imgpath = $(this).find("a").prop("href");
+		var link = $(this).find("a");
+		var imgpath = link.prop("href");
+		link.prop("href","#"); // Disable the link
 		$(this).css("background-image","url('" + imgpath+ "')");
-	});
-});
+	});	
+}
