@@ -1,5 +1,5 @@
 #!/bin/sh
-#desc:Browse files and folders
+#desc:Browse files
 #package:odfilemanager
 #type:local
 

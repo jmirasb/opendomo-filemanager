@@ -2,9 +2,12 @@ var repositoryURL="https://github.com/jmirasb/opendomo-filemanager/";
 
 var currentItem = -1;
 $(function($){
-	/* This will be moved as CGI's feature when it's finally stable */
+	/* This snippet will be moved as CGI's feature when it's finally stable */
 	$("body").on("keydown",function(event){
 		console.log("Key pressed: "+ event.which);
+		if ((event.target.nodeName == "INPUT")||(event.target.nodeName == "SELECT") ) {
+			return false;
+		}
 		/* NAVIGATION KEYS */
 		if (event.which == 39 ) { // Right 
 			currentItem++;
@@ -15,11 +18,21 @@ $(function($){
 		if (currentItem == -1) currentItem = $("fieldset li").length -1;
 		if (currentItem >=  $("fieldset li").length ) currentItem = 0; 		
 		
+
+		/* HELP KEY */
+		if (event.which==112) {
+			event.preventDefault();
+			$("#submit-help").trigger("click");
+		}
+		
 		try {
 			var item = $($("fieldset li")[currentItem]);
 			
-			/* FUNCTIONAL KEYS */
-			if (event.which == 46 ) { // Delete
+			/* SHORTCUT KEYS */
+			if (event.which >= 65 && event.which <=90) {
+				var letra = String.fromCharCode(event.which);
+			}
+			if (letra=="D") { // Delete
 				item.addClass("deleted");
 				setTimeout(function(){
 					item.remove();
@@ -39,8 +52,12 @@ $(function($){
 		$("fieldset li").removeClass("highlight");
 		$("fieldset li")[currentItem].className+=" highlight";
 	});
+	/* END OF SNIPPET */
 	
 	initialize_thumbnails();
+});
+
+function initialize_thumbnails() {
 	$("body").append("<div id='imagepreview' class='folded'>"+
 		"<div class='closebanner'></div>"+
 		"<div class='behindimage'></div>"+
@@ -81,14 +98,11 @@ $(function($){
 			$("div.nextimage").removeClass("nextimage").addClass("currentimage");        // next -> current 
 			$("div.reserved").removeClass("reserved").addClass("nextimage");             // behind -> next		
 		}
-	});
-		
-});
-
-function initialize_thumbnails() {
+	});	
+	
 	// Processing thumbnails
 	item=0;
-	$("fieldset li").each(function(item){
+	$("fieldset li.image").each(function(item){
 		var fullpath = $(this).prop("id");
 		$(this).data("itemnumber",item);
 		$(this).on("click",zoomTo);
