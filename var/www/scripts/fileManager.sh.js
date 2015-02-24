@@ -135,7 +135,16 @@ function getImageFromItem(itemNumber) {
 	try {
 		if ($("fieldset li").length> itemNumber && itemNumber>=0) {
 			var item = $("fieldset li")[itemNumber];
-			return $(item).data("imagepath");	
+			var imagepath = $(item).data("imagepath");
+			if (typeof imagepath == "undefined") {
+				if ($(item).hasClass("dir")){
+					return "/images/dir.png";
+				} else {
+					return "/images/file.png";
+				}
+			} else {
+				return imagepath;	
+			}
 		}else{
 			return "";
 		}
