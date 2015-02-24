@@ -73,7 +73,7 @@ function initialize_thumbnails() {
 			$("#imagepreview").toggleClass("folded");
 			return;
 		}
-		if (event.offsetX < (document.body.offsetWidth / 2)) { // left
+		if (event.pageX < (document.body.offsetWidth / 2)) { // left
 			currentItem--;
 			console.log("Previous");
 			if (currentItem<0) currentItem=$("fieldset li").length;
