@@ -5,9 +5,9 @@
 
 # Copyright(c) 2015 OpenDomo Services SL. Licensed under GPL v3 or later
 
-## The way OpenDomoOS organizes files is by using what we call collections. A 
-## collection is a group of files with something in common. This can be a topic,
-## a file type, a privacy or protection level, etc
+## The way OpenDomoOS organizes files is by using what we call collections.  
+## A collection is a group of files with something in common. This can be a 
+## topic, a file type, a privacy or protection level, etc
 ##
 ## Collections are stored in the owner's home folder, since they are a private 
 ## way of organization. However, if the user wants to share a collection, it 
