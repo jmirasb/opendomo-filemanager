@@ -3,7 +3,7 @@
 #package:odfilemanager
 #type:local
 
-# Copyright(c) 2014 OpenDomo Services SL. Licensed under GPL v3 or later
+# Copyright(c) 2015 OpenDomo Services SL. Licensed under GPL v3 or later
 
 ## The way OpenDomoOS organizes files is by using what we call collections. A 
 ## collection is a group of files with something in common. This can be a topic,
@@ -38,8 +38,10 @@ fi
 echo "#> Manage collections"
 echo "list:manageCollections.sh"
 for c in *.col; do
-	source ./$c
-	echo "	-$c	$NAME	$TYPE	$LOCATION"
+	if test -f "$c"; then
+		source ./$c
+		echo "	-$c	$NAME	$TYPE	$LOCATION"
+	fi
 done
 if test -z "$NAME"; then
 	echo "#INFO No collections were found."
