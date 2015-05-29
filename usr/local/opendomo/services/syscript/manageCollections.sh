@@ -50,10 +50,13 @@ fi
 echo
 
 if ! test -z $1; then
+	echo "#> Edit"
 	source $CONFIGPATH/$1
+else
+	echo "#> Add"
 fi
 
-echo "#> Edit"
+
 echo "form:manageCollections.sh"
 echo "	code	code	hidden	$CODE"
 echo "	name	Name	text	$NAME"

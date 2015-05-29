@@ -31,11 +31,11 @@ then
 	for FILENAME in `find ./ -not -name ".*" -type f `
 	do
 		# If the file is not in the index ...
-		if ! grep -q $FILENAME .scanfile.txt
+		if ! grep -q "$FILENAME" .scanfile.txt
 		then
 			# ... we add it!
-			MD5SUM=`md5sum $FILENAME | cut -f1 -d' '`
-			SIZE=`wc -c $FILENAME | cut -f1 -d' '`
+			MD5SUM=`md5sum "$FILENAME" | cut -f1 -d' '`
+			SIZE=`wc -c "$FILENAME" | cut -f1 -d' '`
 			echo "$MD5SUM $SIZE $FILENAME" >> .scanfile.txt
 		fi
 	done
