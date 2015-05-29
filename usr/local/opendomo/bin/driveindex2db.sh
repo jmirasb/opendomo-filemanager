@@ -27,7 +27,7 @@ then
 fi
 if ! test -f .scanfile.txt
 then
-	echo "#ERROR Drive was never indexed"
+	echo "#ERROR Drive was never indexed. Run scandrive.sh first"
 	exit 1
 fi
 
@@ -39,14 +39,15 @@ fi
 
 TOTAL=`wc -l .scanfile.txt | cut -f1 -d' '`
 CURRENT=0
-while read FLINE
+while read -r FLINE
 do
 	let CURRENT=$CURRENT+1
 	#TODO use AWK instead
 	MD5SUM=`echo "$FLINE" | cut -f1 -d' '`
 	SIZE=`echo "$FLINE" | cut -f2 -d' '`
-	PATH=`echo "$FLINE" | cut -f3- -d' '`
-	echo "# Updating $FILENAME ... ($CURRENT / $TOTAL)"
-	echo "REPLACE INTO files (md5,size,path) VALUES ('$MD5SUM',$SIZE, '$PATH')" | sqlite3 .scanfile.sqlite
+	FILEPATH=`echo "$FLINE" | cut -f3- -d' '`
+	echo "# Updating $FILEPATH ... ($CURRENT / $TOTAL)"
+	echo "REPLACE INTO files (md5,size,path) VALUES ('$MD5SUM',$SIZE, '$FILEPATH');" | sqlite3 .scanfile.sqlite
 
 done < .scanfile.txt
+

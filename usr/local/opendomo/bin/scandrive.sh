@@ -29,7 +29,7 @@ then
 	find ./ -not -name ".*" -type f  > .scanfile.tmp
 	TOTAL=`wc -l .scanfile.tmp | cut -f1 -d' '`
 	CURRENT=0
-	while read FILENAME
+	while read -r FILENAME
 	do
 		let CURRENT=$CURRENT+1
 		echo "# Indexing $FILENAME ... ($CURRENT / $TOTAL)"
