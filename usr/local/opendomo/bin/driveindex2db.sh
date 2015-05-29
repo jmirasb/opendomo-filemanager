@@ -39,14 +39,14 @@ fi
 
 TOTAL=`wc -l .scanfile.txt | cut -f1 -d' '`
 CURRENT=0
-while read LINE
+while read FLINE
 do
 	let CURRENT=$CURRENT+1
 	#TODO use AWK instead
-	MD5SUM=`echo $LINE | cut -f1 -d' '`
-	SIZE=`echo $LINE | cut -f2 -d' '`
-	PATH=`echo $LINE | cut -f3- -d' '`
-	echo "REPLACE INTO files (md5,size,path) VALUES ('$MD5SUM',$SIZE, '$FILENAME')" | sqlite3 .scanfile.sqlite
+	MD5SUM=`echo "$FLINE" | cut -f1 -d' '`
+	SIZE=`echo "$FLINE" | cut -f2 -d' '`
+	PATH=`echo "$FLINE" | cut -f3- -d' '`
 	echo "# Updating $FILENAME ... ($CURRENT / $TOTAL)"
-	
+	echo "REPLACE INTO files (md5,size,path) VALUES ('$MD5SUM',$SIZE, '$PATH')" | sqlite3 .scanfile.sqlite
+
 done < .scanfile.txt
