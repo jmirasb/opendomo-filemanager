@@ -27,6 +27,7 @@ cd $CONFIGPATH
 
 if ! test -z "$2"; then
 	#More than one parameter, we are saving a location data
+	test -z "$CODE" && CODE=`echo $2 | sed 's/[^a-z0-9]//gi'`
 	echo "CODE='$1'" > $CONFIGPATH/$CODE.col
 	echo "NAME='$2'" >> $CONFIGPATH/$CODE.col
 	echo "TYPE='$3'" >> $CONFIGPATH/$CODE.col
