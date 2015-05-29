@@ -5,6 +5,9 @@
 
 # Copyright(c) 2015 OpenDomo Services SL. Licensed under GPL v3 or later
 
+## This script walks the given drive and creates a text based index file 
+## with the md5 hash, size and relative path of each file. 
+
 drive="$1"
 
 if test -z "$drive"
@@ -23,9 +26,13 @@ then
 	# Indexing files 
 	cd $drive
 	#mv .scanfile.txt .scanfile.old
-	touch .scanfile.txt
-	for FILENAME in `find ./ -not -name ".*" -type f `
+	find ./ -not -name ".*" -type f  > .scanfile.tmp
+	TOTAL=`wc -l .scanfile.tmp | cut -f1 -d' '`
+	CURRENT=0
+	while read FILENAME
 	do
+		let CURRENT=$CURRENT+1
+		echo "# Indexing $FILENAME ... ($CURRENT / $TOTAL)"
 		# If the file is not in the index ...
 		if ! grep -q "$FILENAME" .scanfile.txt
 		then
@@ -34,7 +41,7 @@ then
 			SIZE=`wc -c "$FILENAME" | cut -f1 -d' '`
 			echo "$MD5SUM $SIZE $FILENAME" >> .scanfile.txt
 		fi
-	done
+	done < .scanfile.tmp
 	rm -fr .scanfile.pid 
 
 else

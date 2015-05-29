@@ -27,7 +27,7 @@ then
 fi
 if test -f .scanfile.txt
 then
-	cat .scanfile.
+	cat .scanfile.txt
 else
 	echo "#ERROR Drive was never indexed"
 	exit 1
