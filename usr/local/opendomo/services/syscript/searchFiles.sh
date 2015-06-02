@@ -50,5 +50,5 @@ echo "#> Search"
 echo "form:`basename $0`"
 echo "	drive	Path	text	$SEARCHPATH"
 echo "	string	Search string	text	$STRING"
-echo "	keywords	Keywords	list[$KEYWORDS]	$KEYWORDSSELECTED"
+echo "	keywords	Keywords	list[,$KEYWORDS]	$KEYWORDSSELECTED"
 echo
