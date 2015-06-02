@@ -113,7 +113,7 @@ list_path_contents() {
 	echo
 	echo "form:uploadFile.sh"
 	echo "	path	path	hidden	$1"
-	echo "	file	file	file	"
+	echo "	file	file	file	uploadingfile.tmp"
 	echo
 }
 
