@@ -110,6 +110,11 @@ list_path_contents() {
 		echo "	deleteFiles.sh	Delete"
 	fi
 	echo "	searchFiles.sh	Search"		
+	
+	echo "form:uploadFile.sh"
+	echo "	path	path	hidden	$1"
+	echo "	file	file	file	"
+	echo
 }
 
 if [ "$ROUTE" == "/" ]; then

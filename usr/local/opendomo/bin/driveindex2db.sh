@@ -33,7 +33,7 @@ fi
 
 if ! test -f .scanfile.sqlite
 then
-	CREATESQL="CREATE TABLE files (id INTEGER PRIMARY KEY AUTOINCREMENT, md5 CHAR(32), size INTEGER, path TEXT);"
+	CREATESQL="CREATE TABLE files (id INTEGER PRIMARY KEY AUTOINCREMENT, md5 CHAR(32), size INTEGER, path TEXT UNIQUE);"
 	echo $CREATESQL | sqlite3 .scanfile.sqlite
 fi
 
