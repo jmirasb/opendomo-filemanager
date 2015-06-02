@@ -111,9 +111,10 @@ list_path_contents() {
 	fi
 	echo "	searchFiles.sh	Search"		
 	echo
-	echo "form:uploadFile.sh"
+	echo "#> Upload file"
+	echo "form:uploadFile.sh	foldable"
 	echo "	path	path	hidden	$1"
-	echo "	file	file	file	uploadingfile.tmp"
+	echo "	file	file	File	uploadingfile.tmp"
 	echo
 }
 
