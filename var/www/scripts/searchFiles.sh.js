@@ -6,10 +6,13 @@ $("#string").on("keydown", function(event){
 		searchFiles(event);
 	}
 });
-
+$("fieldset.selectable li").on("mouseup touchend", function(event) {
+	var keywords = $("li.keyword.selected").text();
+	searchFiles();
+});
 
 function searchFiles(event){
-	event.preventDefault();
+	if (event) event.preventDefault();
 	var string = $("#string").val();
 	loadAsync("?GUI=XML&string="+string,function(data){
 		$("p.loading").show();

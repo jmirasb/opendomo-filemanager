@@ -11,20 +11,25 @@
 ## In this way, we avoid the overhead of loading collections and keywords 
 ## for every search.
 
-SEARCHPATH="$1"
-STRING="$2"
+STRING="$1"
 
 if test -z "$1" || test $1 = "/"
 then
 	# No parameter specified: just show the search form
-	SEARCHPATH="/"
+
+	if test -z "$2"; then
+		SEARCHPATH="/"
+	else
+		SEARCHPATH="$2"
+	fi
+	
 	#FIXME Beware spaces!!
 	KEYWORDS="2014 2015 New+year Holidays Birthday"
 
 	echo "#> Search"
 	echo "form:`basename $0`"
-	echo "	drive	Path	hidden	$SEARCHPATH"
 	echo "	string	Search	text	$STRING"
+	echo "	drive	Path	hidden	$SEARCHPATH"	
 	echo 
 	echo "#> Search results"
 	echo "list:searchResults"

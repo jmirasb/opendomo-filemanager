@@ -31,6 +31,11 @@ li.deleted {
 
 #keywords li {
 	display: inline-block;
+	height: auto;
+	margin: 3px;
+	padding: 5px;
+	text-indent: 0;
+	border-radius: 5px
 }
 
 @media (max-width:480px) {
@@ -43,11 +48,19 @@ li.deleted {
 	#keywords_div {
 		display: none;
 	}
+	#searchFiles {
+		margin-top: 0;
+		margin-bottom: 0;	
+	}
 }
 
 @media screen and (min-width: 481px) {
+	#string_lbl {
+		display: none;
+	}
 	#searchFiles_div {
 		display: table-cell;
+		width: 300px;
 	}
 	#searchResults_div {
 		display: table-cell;
@@ -57,5 +70,6 @@ li.deleted {
 		display: inline-block;
 		position: fixed;
 		top: 240px;
+		width: 300px;
 	}	
 }
