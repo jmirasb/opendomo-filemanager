@@ -25,6 +25,10 @@ then
 	echo "form:`basename $0`"
 	echo "	drive	Path	hidden	$SEARCHPATH"
 	echo "	string	Search	text	$STRING"
+	echo 
+	echo "#> Search results"
+	echo "list:searchResults"
+	echo "#LOADING Loading results..."	
 	echo
 	echo "#> Keywords"
 	echo "list:keywords	selectable"
@@ -38,10 +42,6 @@ then
 			echo "	$cl	$cl	collection"
 		done	
 	fi
-	echo 
-	echo "#> Search results"
-	echo "list:searchResults"
-	echo "#LOADING Loading results..."
 	echo
 else
 	# With parameters, we just show the results:

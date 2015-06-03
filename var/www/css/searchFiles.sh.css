@@ -47,5 +47,10 @@ li.deleted {
 	}
 	#searchResults_div {
 		display: table-cell;
+		clear: both;
+		white-space: normal;		
 	}
+	#keywords_div {
+		display: table-cell;
+	}	
 }
