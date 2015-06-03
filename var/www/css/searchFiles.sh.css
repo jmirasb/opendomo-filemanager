@@ -1,0 +1,46 @@
+ul li.dir {
+	background-image: url("/images/dir.png");
+}
+ul li.file {
+	background-image: url("/images/file.png");
+}
+
+ul li.drive p {
+	background-image: url("/images/drive.png");
+	background-position: left center;
+	background-repeat: no-repeat;
+	background-size: 30px;
+}
+
+.highlight {
+  -webkit-box-shadow: 0px 0px 8px 5px rgba(0, 11, 192, 0.5);
+     -moz-box-shadow: 0px 0px 8px 5px rgba(0, 11, 192, 0.5);
+          box-shadow: 0px 0px 8px 5px rgba(0, 11, 192, 0.5);
+		  
+}
+li.deleted {
+	/*height: 0px!important;
+	width: 0px!important; */
+	background-size: 0px!important;
+	opacity: 0;
+}
+
+@media (max-width:480px) {
+	#drive_li, #searchFiles_lgnd, #string_lbl label {
+		display: none;
+	}
+	div.toolbar {
+		display: none;
+	}
+}
+
+@media screen and (min-width: 481px) {
+	#searchFiles_div {
+		width: 20%;
+		display: inline-block;
+	}
+	#searchResults_div {
+		width: 79%;
+		display: inline-block;
+	}
+}

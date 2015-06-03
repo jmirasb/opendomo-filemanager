@@ -27,7 +27,8 @@ then
 	echo "	keywords	Keywords	list[,$KEYWORDS]	$KEYWORDSSELECTED"
 	echo 
 	echo "#> Search results"
-	echo "list:`basename $0`"
+	echo "list:searchResults"
+	echo "#LOAD Loading..."
 	echo
 else
 	# With parameters, we just show the results:
