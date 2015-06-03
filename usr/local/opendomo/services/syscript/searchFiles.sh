@@ -19,21 +19,29 @@ then
 	# No parameter specified: just show the search form
 	SEARCHPATH="/"
 	#FIXME Beware spaces!!
-	KEYWORDS="2014,2015,New+year,Holidays,Birthday"
+	KEYWORDS="2014 2015 New+year Holidays Birthday"
 
 	echo "#> Search"
 	echo "form:`basename $0`"
 	echo "	drive	Path	text	$SEARCHPATH"
 	echo "	string	Search string	text	$STRING"
 	echo
+	echo "#> Keywords"
 	echo "list:keywords	multiselect"
 	for kw in $KEYWORDS; do
 		echo "	-$kw	$kw	keyword"
 	done
+	if test -f /home/$USER/collections/; then
+		echo "#> Collections"
+		echo "list:collections	multiselect"
+		for kl in /home/$USER/collections/*.col; do
+			echo "	-$cl	$cl	collection"
+		done	
+	fi
 	echo 
 	echo "#> Search results"
 	echo "list:searchResults"
-	echo "#LOAD Loading..."
+	echo "#LOADING Loading results..."
 	echo
 else
 	# With parameters, we just show the results:

@@ -6,7 +6,7 @@ $(function($){
 	$("body").on("keydown",function(event){
 		console.log("Key pressed: "+ event.which);
 		if ((event.target.nodeName == "INPUT")||(event.target.nodeName == "SELECT") ) {
-			return false;
+			return true;
 		}
 		/* NAVIGATION KEYS */
 		if (event.which == 39 ) { // Right 

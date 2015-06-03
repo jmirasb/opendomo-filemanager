@@ -24,12 +24,19 @@ li.deleted {
 	background-size: 0px!important;
 	opacity: 0;
 }
+#searchResults {
+	min-height: 300px;
+	overflow: auto;
+}
 
 @media (max-width:480px) {
-	#drive_li, #searchFiles_lgnd, #string_lbl label {
+	#drive_li, #searchFiles_lgnd, #string_lbl {
 		display: none;
 	}
 	div.toolbar {
+		display: none;
+	}
+	ul#keywords {
 		display: none;
 	}
 }
