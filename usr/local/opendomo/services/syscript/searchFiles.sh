@@ -23,8 +23,8 @@ then
 
 	echo "#> Search"
 	echo "form:`basename $0`"
-	echo "	drive	Path	text	$SEARCHPATH"
-	echo "	string	Search string	text	$STRING"
+	echo "	drive	Path	hidden	$SEARCHPATH"
+	echo "	string	Search	text	$STRING"
 	echo
 	echo "#> Keywords"
 	echo "list:keywords	selectable"

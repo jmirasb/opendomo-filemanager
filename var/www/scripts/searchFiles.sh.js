@@ -3,8 +3,7 @@ include_script("/scripts/fileManager.sh.js");
 $("button[type=submit]").on("click", searchFiles);
 $("#string").on("keydown", function(event){
 	if (event.which==13) {
-		event.preventDefault();
-		searchFiles();
+		searchFiles(event);
 	}
 });
 
