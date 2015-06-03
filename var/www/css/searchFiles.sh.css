@@ -36,7 +36,7 @@ li.deleted {
 	div.toolbar {
 		display: none;
 	}
-	ul#keywords {
+	ul#keywords_div {
 		display: none;
 	}
 }

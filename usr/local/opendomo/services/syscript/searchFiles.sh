@@ -27,15 +27,15 @@ then
 	echo "	string	Search string	text	$STRING"
 	echo
 	echo "#> Keywords"
-	echo "list:keywords	multiselect"
+	echo "list:keywords	selectable"
 	for kw in $KEYWORDS; do
-		echo "	-$kw	$kw	keyword"
+		echo "	$kw	$kw	keyword"
 	done
 	if test -f /home/$USER/collections/; then
 		echo "#> Collections"
-		echo "list:collections	multiselect"
+		echo "list:collections	selectable"
 		for kl in /home/$USER/collections/*.col; do
-			echo "	-$cl	$cl	collection"
+			echo "	$cl	$cl	collection"
 		done	
 	fi
 	echo 
