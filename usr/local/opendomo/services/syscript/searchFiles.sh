@@ -18,13 +18,18 @@ if test -z "$1" || test $1 = "/"
 then
 	# No parameter specified: just show the search form
 	SEARCHPATH="/"
-	KEYWORDS="2014,2015,New year,Holidays,Birthday"
+	#FIXME Beware spaces!!
+	KEYWORDS="2014,2015,New+year,Holidays,Birthday"
 
 	echo "#> Search"
 	echo "form:`basename $0`"
 	echo "	drive	Path	text	$SEARCHPATH"
 	echo "	string	Search string	text	$STRING"
-	echo "	keywords	Keywords	list[,$KEYWORDS]	$KEYWORDSSELECTED"
+	echo
+	echo "list:keywords	multiselect"
+	for kw in $KEYWORDS; do
+		echo "	-$kw	$kw	keyword"
+	done
 	echo 
 	echo "#> Search results"
 	echo "list:searchResults"

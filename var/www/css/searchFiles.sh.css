@@ -36,11 +36,9 @@ li.deleted {
 
 @media screen and (min-width: 481px) {
 	#searchFiles_div {
-		width: 20%;
-		display: inline-block;
+		display: table-cell;
 	}
 	#searchResults_div {
-		width: 79%;
-		display: inline-block;
+		display: table-cell;
 	}
 }
