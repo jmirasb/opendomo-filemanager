@@ -11,7 +11,7 @@ $("#string").on("keydown", function(event){
 function searchFiles(event){
 	event.preventDefault();
 	var string = $("#string").val();
-	loadAsync("?GUI=XML&amp;string="+string,function(data){
+	loadAsync("?GUI=XML&string="+string,function(data){
 		$("p.loading").show();
 		setTimeout(function(){
 			$("p.loading").hide();

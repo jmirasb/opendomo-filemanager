@@ -29,6 +29,10 @@ li.deleted {
 	overflow: auto;
 }
 
+#keywords li {
+	display: inline-block;
+}
+
 @media (max-width:480px) {
 	#drive_li, #searchFiles_lgnd, #string_lbl {
 		display: none;
@@ -47,10 +51,11 @@ li.deleted {
 	}
 	#searchResults_div {
 		display: table-cell;
-		clear: both;
-		white-space: normal;		
+		width: 100%;
 	}
 	#keywords_div {
-		display: table-cell;
+		display: inline-block;
+		position: fixed;
+		top: 240px;
 	}	
 }
