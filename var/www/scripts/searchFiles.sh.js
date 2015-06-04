@@ -16,7 +16,9 @@ function searchFiles(event){
 	$("p.loading").show();
 	var string = $("#string").val();
 	loadAsync("?GUI=XML&string="+string,function(data){
-		
+		$(data).find("item").each(function(){
+			$(this).
+		});
 		setTimeout(function(){
 			$("p.loading").hide();
 		}, 1000);

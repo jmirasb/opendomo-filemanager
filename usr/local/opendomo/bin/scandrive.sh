@@ -26,7 +26,7 @@ then
 	# Indexing files 
 	cd $drive
 	#mv .scanfile.txt .scanfile.old
-	find ./ -not -name ".*" -type f  > .scanfile.tmp
+	find . \( ! -regex '.*/\..*' \) -type f  > .scanfile.tmp
 	TOTAL=`wc -l .scanfile.tmp | cut -f1 -d' '`
 	CURRENT=0
 	while read -r FILENAME
