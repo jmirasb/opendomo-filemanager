@@ -16,8 +16,12 @@ function searchFiles(event){
 	$("p.loading").show();
 	var string = $("#string").val();
 	loadAsync("?GUI=XML&string="+string,function(data){
+		$("#searchResults li").remove();
 		$(data).find("item").each(function(){
-			
+			var link  = $(this).prop("href");
+			var cname = $(this).prop("class");
+			var label = $(this).prop("label");
+			$("#searchResults").append("<li class='" + cname + "'><a href='" + link + "'>" + label + "</a></li>");
 		});
 		setTimeout(function(){
 			$("p.loading").hide();

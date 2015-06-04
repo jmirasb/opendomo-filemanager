@@ -54,7 +54,7 @@ else
 	fi	
 	
 	# searchpath is a drive name or "*"
-	GREPQUERY="/media/$SEARCHPATH/.scanfile.txt"
+	#GREPQUERY="/media/$SEARCHPATH/.scanfile.txt"
 
 	# Case 3: searching in a collection
 	#if test -f /home/$USER/collections/$SEARCHPATH.col 
@@ -67,7 +67,10 @@ else
 	
 	echo "#> Search results"
 	echo "list:`basename $0`"
-	grep $STRING $GREPQUERY | awk '{print "\t-$d/" $3 "\t" $3 "\t" "file" "\t" $2 }'
+	cd /media/
+	for d in $SEARCHPATH; do
+		grep $STRING .scanfile.txt | awk '{print "\t-$d/" $3 "\t" $3 "\t" "file" "\t" $2 }'
+	done
 
 fi
 echo
