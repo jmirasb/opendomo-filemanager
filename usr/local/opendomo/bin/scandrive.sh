@@ -39,7 +39,7 @@ then
 			# ... we add it!
 			MD5SUM=`md5sum "$FILENAME" | cut -f1 -d' '`
 			SIZE=`wc -c "$FILENAME" | cut -f1 -d' '`
-			echo "$MD5SUM $SIZE $FILENAME" >> .scanfile.txt
+			echo "$MD5SUM|$SIZE|$FILENAME" >> .scanfile.txt
 		fi
 	done < .scanfile.tmp
 	rm -fr .scanfile.pid 
