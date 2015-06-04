@@ -18,9 +18,9 @@ function searchFiles(event){
 	loadAsync("?GUI=XML&string="+string,function(data){
 		$("#searchResults li").remove();
 		$(data).find("item").each(function(){
-			var link  = $(this).prop("href");
-			var cname = $(this).prop("class");
-			var label = $(this).prop("label");
+			var link  = $(this).attr("href");
+			var cname = $(this).attr("class");
+			var label = $(this).attr("label");
 			$("#searchResults").append("<li class='" + cname + "'><a href='" + link + "'>" + label + "</a></li>");
 		});
 		setTimeout(function(){
