@@ -11,24 +11,18 @@
 ## In this way, we avoid the overhead of loading collections and keywords 
 ## for every search.
 
-STRING="$1"
+
 
 if test -z "$1" || test $1 = "/"
 then
 	# No parameter specified: just show the search form
-
-	if test -z "$2"; then
-		SEARCHPATH="/"
-	else
-		SEARCHPATH="$2"
-	fi
 	
 	#FIXME Beware spaces!!
 	KEYWORDS="2014 2015 New+year Holidays Birthday"
 
 	echo "#> Search"
 	echo "form:`basename $0`"
-	echo "	string	Search	text	$STRING"
+	echo "	string	Search	text	$1"
 	echo "	drive	Path	hidden	$SEARCHPATH"	
 	echo 
 	echo "#> Search results"
@@ -51,30 +45,25 @@ then
 else
 	# With parameters, we just show the results:
 	
+	STRING="$1"
 	
-	# Case 1: searching in the entire library
-	if test "$SEARCHPATH" = "/"
-	then
-		cd /media/
-		GREPQUERY="/media/*/.scanfile.txt"
-	fi
+	if test -z "$2"; then
+		SEARCHPATH="*"
+	else
+		SEARCHPATH="$2"
+	fi	
+	
+	# searchpath is a drive name or "*"
+	GREPQUERY="/media/$SEARCHPATH/.scanfile.txt"
 
-	# Case 2: searchpath is a drive name
-	if test -d /media/$SEARCHPATH
-	then
-		cd /media/$SEARCHPATH
-		d="$SEARCHPATH"
-		GREPQUERY="/media/$SEARCHPATH/.scanfile.txt"
-	fi
-	
 	# Case 3: searching in a collection
-	if test -f /home/$USER/collections/$SEARCHPATH.col 
-	then
-		source /home/$USER/collections/$SEARCHPATH.col 
-		cd $LOCATION
-		d=$LOCATION
-		GREPQUERY=".scanfile.txt"
-	fi
+	#if test -f /home/$USER/collections/$SEARCHPATH.col 
+	#then
+	#	source /home/$USER/collections/$SEARCHPATH.col 
+	#	cd $LOCATION
+	#	d=$LOCATION
+	#	GREPQUERY=".scanfile.txt"
+	#fi
 	
 	echo "#> Search results"
 	echo "list:`basename $0`"

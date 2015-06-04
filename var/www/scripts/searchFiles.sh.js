@@ -13,9 +13,10 @@ $("fieldset.selectable li").on("mouseup touchend", function(event) {
 
 function searchFiles(event){
 	if (event) event.preventDefault();
+	$("p.loading").show();
 	var string = $("#string").val();
 	loadAsync("?GUI=XML&string="+string,function(data){
-		$("p.loading").show();
+		
 		setTimeout(function(){
 			$("p.loading").hide();
 		}, 1000);
