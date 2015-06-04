@@ -69,7 +69,7 @@ else
 	echo "list:`basename $0`"
 	cd /media/
 	for d in $SEARCHPATH; do
-		grep $STRING /media/$d/.scanfile.txt | sed 's/|/\t/g' | awk '{print "\t-$d/" $3 "\t" $3 "\t" "file" "\t" $2 }'
+		grep $STRING /media/$d/.scanfile.txt | awk -F "|" '{print "\t-$d/" $3 "\t" $3 "\t" "file" "\t" $2 }'
 	done
 
 fi
