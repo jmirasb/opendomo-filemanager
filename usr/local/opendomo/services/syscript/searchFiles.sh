@@ -8,10 +8,7 @@
 ## This script works in two different scenarios: 
 ## 1. No parameters, it will display the form with the search field, keywords, etc
 ## 2. With parameters, it will display the list witht the results
-## In this way, we avoid the overhead of loading collections and keywords 
-## for every search.
-
-
+## In this way, we avoid the overhead of loading collections and keywords for every search.
 
 if test -z "$1" || test $1 = "/"
 then
