@@ -35,7 +35,6 @@ if ! test -z "$2"; then
 	echo "CRITICITY='$5'" >> $CONFIGPATH/$CODE.col
 fi
 
-
 echo "#> Manage collections"
 echo "list:manageCollections.sh"
 for c in *.col; do
