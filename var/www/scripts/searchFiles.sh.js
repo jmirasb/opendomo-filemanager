@@ -20,7 +20,8 @@ function searchFiles(event){
 		$(data).find("item").each(function(){
 			var link  = $(this).attr("href");
 			var cname = $(this).attr("class");
-			var label = $(this).attr("label");
+			var fullpath = $(this).attr("label");
+			var label = fullpath.split("/").pop();
 			$("#searchResults").append("<li class='" + cname + "'><a href='" + link + "'>" + label + "</a></li>");
 		});
 		setTimeout(function(){
