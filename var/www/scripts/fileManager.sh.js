@@ -2,7 +2,8 @@ var repositoryURL="https://github.com/jmirasb/opendomo-filemanager/";
 
 var currentItem = -1;
 $(function($){
-	/* This snippet will be moved as CGI's feature when it's finally stable */
+	/* KEYBOARD CONTROL
+	  This snippet will be moved as CGI's feature when it's finally stable */
 	$("body").on("keydown",function(event){
 		console.log("Key pressed: "+ event.which);
 		if ((event.target.nodeName == "INPUT")||(event.target.nodeName == "SELECT") ) {
